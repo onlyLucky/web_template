@@ -1,0 +1,167 @@
+.modelComps{
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  .mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .model_content{
+    width: 7rem;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0rem 0rem 0.16rem 0rem rgba(0,0,0,0.302);
+    border-radius: 0.08rem;
+  }
+  .m_header{
+    width: 100%;
+    height: 1.02rem;
+    border-bottom: 0.02rem solid rgba(0, 0, 0, .05);
+    margin-bottom: 0.5rem;
+    h3{
+      font-size: 0.32rem;
+      text-align: center;
+      font-weight: 600;
+      line-height: 1.02rem;
+      color: #333;
+    }
+  }
+  .m_body{
+    width: 100%;
+    height: auto;
+    padding: 0 0.1rem;
+    box-sizing: border-box;
+    
+  }
+  .m_footer {
+    width: 100%;
+    height: 1.55rem;
+    padding: 0.4rem 0.6rem;
+    box-sizing: border-box;
+    .m_footerCon{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .optItem{
+        width: 1.5rem;
+        height: 0.75rem;
+        border-radius: 0.08rem;
+        margin-left: 0.3rem;
+        text-align: center;
+        line-height: 0.75rem;
+        font-size: 0.28rem;
+        cursor: pointer;
+        user-select: none;
+      }
+      .optItem.cancel{
+        color: #999;
+        background: rgba(153, 153, 153, .2);
+      }
+      .optItem.promise{
+        color: #FFF;
+        background: #0096FF;
+      }
+    }
+  }
+}
+
+#selectNode_Model.modelComps{
+  .model_content{
+    width: 7rem;
+    height: 8.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%,-50%);
+  }
+  .m_body{
+    width: 100%;
+    height: calc(~"100% - 3.1rem");
+    padding: 0 0.1rem;
+    box-sizing: border-box;
+    .m_bodyCon{
+      width: 100%;
+      height: 100%;
+      padding: 0 0.5rem;
+      box-sizing: border-box;
+      overflow: overlay;
+      padding-top: 0.06rem;
+      .bodyItem{
+        width: 100%;
+        height: 0.84rem;
+        border-radius: 0.08rem;
+        background: rgba(0,0,0,.05);
+        padding: 0 0.28rem;
+        box-sizing: border-box;
+        margin-bottom: 0.16rem;
+        cursor: pointer;
+        p{
+          width: 100%;
+          height: 0.84rem;
+          line-height: 0.84rem;
+          overflow: hidden; /* 超出隐藏 */
+          white-space: nowrap; /* 保持文本在一行 */
+          text-overflow: ellipsis; /* 超出显示省略号 */
+          font-size: 0.28rem;
+          color: #999;
+        }
+      }
+      .bodyItem.active{
+        border: 0.01rem solid #0096FF;
+        background: rgba(0,150,255,0.1);
+        transform: scale(1.02);
+        transform-origin: center;
+        p{
+          color: #0096FF;
+        }
+      }
+    }
+  }
+  
+}
+
+#authConform_Model{
+  .model_content{}
+  .m_body{
+    .m_bodyCon{
+      padding: 0 0.2rem;
+      box-sizing: border;
+      width: 100%;
+      
+      text-align: center;
+      h5{
+        font-size: 0.32rem;
+        line-height: 0.40rem;
+        color: #333;
+        margin-bottom: 0.3rem;
+        user-select: none;
+      }
+      p{
+        width: 100%;
+        font-size: 0.26rem;
+        line-height: 0.32rem;
+        text-align: center;
+        color: #666;
+        margin-bottom: 0.3rem;
+        user-select: none;
+        word-wrap:break-word;
+        span{
+          user-select: auto;
+          color: #999;
+          margin-left: 0.1rem;
+        }
+      }
+    }
+  }
+
+}
