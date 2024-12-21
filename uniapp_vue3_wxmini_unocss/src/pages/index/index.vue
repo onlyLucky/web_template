@@ -367,10 +367,7 @@
     }
   }
   ::v-deep .nut-popup{
-    .nut-popup__close-icon{
-      color: #333;
-      top: 24rpx;
-    }
+    
     
   }
 
@@ -386,6 +383,10 @@
       &:nth-child(3n){
         margin-right: 0;
       }
+    }
+    & + ::v-deep .nut-popup__close-icon{
+      color: #333;
+      top: 24rpx;
     }
     ::v-deep .nut-button{
       width: 336rpx;

@@ -48,6 +48,7 @@
 <script >
   import {useConfigStore} from "@/store/config"
   // import RabbitMQClient from "@/utils/mqtt.js"
+  import MqttClient from "./utils/mqtt";
   let num = ref(0)
 
   export default {
@@ -86,8 +87,9 @@
         host: '/'
       })
       mt.connect() */
-      /* let mt = new RabbitMQClient()
-      mt.connect("ws://192.168.20.39:15675/ws") */
+      let mt = new MqttClient()
+      // mt.connect("ws://192.168.20.39:15675/ws")
+      mt.connect("wxs://broker.emqx.io:8084/mqtt")
       // provide('wsNum', num);
     },
     onShow: function () {

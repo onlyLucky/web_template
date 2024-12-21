@@ -1,4 +1,10 @@
+// #ifdef H5
 import mqtt from 'mqtt'
+// #endif
+// #ifdef MP-WEIXIN
+// eslint-disable-next-line
+const mqtt = require('../utils/mqtt4.1.0')
+// #endif
 // import Stomp from 'stompjs'
 
 class MqttClient {
