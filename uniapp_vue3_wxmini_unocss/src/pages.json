@@ -1,0 +1,110 @@
+{
+  "easycom": {
+		"autoscan": true,
+		"custom": {
+			// nutui 规则如下配置 https://nutui-uniapp.pages.dev/guide/quick-start.html
+      "^nut-(.*)?-(.*)": "nutui-uniapp/components/$1$2/$1$2.vue",
+      "^nut-(.*)": "nutui-uniapp/components/$1/$1.vue"
+		}
+	},
+	
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/index/controlCar",
+			"style": {
+				"navigationBarTitleText": "远程控制",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/index/msgPage",
+			"style": {
+				"navigationBarTitleText": "通知记录",
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/clinic/index",
+			"style": {
+				"navigationBarTitleText": "诊疗",
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/shop/index",
+			"style": {
+				"navigationBarTitleText": "商城",
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/communication/index",
+			"style": {
+				"navigationBarTitleText": "通讯",
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/user/index",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationStyle":"custom"
+			}
+		}
+	],
+	"tabBar": {
+		"custom": true,
+		"backgroundColor": "#ffffff",
+		"color": "#828282",
+		"selectedColor": "#2D81FF",
+		"iconWidth":"24px",
+		"borderStyle":"black",
+		"height":"0px",
+		"spacing": "3px",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "/static/images/navbar/index.png",
+				"selectedIconPath": "/static/images/navbar/index_active.png"
+			},
+			{
+				"pagePath": "pages/clinic/index",
+				"text": "诊疗",
+				"iconPath": "/static/images/navbar/clinic.png",
+				"selectedIconPath": "/static/images/navbar/index_active.png"
+			},
+			{
+				"pagePath": "pages/shop/index",
+				"text": "商城",
+				"iconPath": "/static/images/navbar/shop.png",
+				"selectedIconPath": "/static/images/navbar/index_active.png"
+			},
+			{
+				"pagePath": "pages/communication/index",
+				"text": "通讯",
+				"iconPath": "/static/images/navbar/comm.png",
+				"selectedIconPath": "/static/images/navbar/index_active.png"
+			},
+			{
+				"pagePath": "pages/user/index",
+				"text": "我的",
+				"iconPath": "/static/images/navbar/user.png",
+				"selectedIconPath": "/static/images/navbar/index_active.png"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
