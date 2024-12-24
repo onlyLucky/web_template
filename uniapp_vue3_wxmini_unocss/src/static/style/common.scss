@@ -3,7 +3,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
+body {
+  -webkit-touch-callout: none; /* 禁止长按出现的菜单 */
+}
 @mixin textEllipsisLine($line) {
   text-overflow: ellipsis;
   display: -webkit-box;

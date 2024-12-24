@@ -87,10 +87,16 @@
         host: '/'
       })
       mt.connect() */
-      let mt = new MqttClient()
-      // mt.connect("ws://192.168.20.39:15675/ws")
-      mt.connect("wxs://broker.emqx.io:8084/mqtt")
+      /* let mt = new MqttClient()
+      mt.connect("ws://192.168.20.39:15675/ws") */
+      // mt.connect("wxs://broker.emqx.io:8084/mqtt")
       // provide('wsNum', num);
+    },
+    mounted(){
+      console.log("mounted")
+      document.addEventListener('contextmenu', (event) => {
+        event.preventDefault();
+      }, false);
     },
     onShow: function () {
       console.log('App Show')

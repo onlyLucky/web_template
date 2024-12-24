@@ -1,7 +1,7 @@
 // #ifdef H5
 import mqtt from 'mqtt'
 // #endif
-// #ifdef MP-WEIXIN
+// #ifdef MP-WEIXIN 
 // eslint-disable-next-line
 const mqtt = require('../utils/mqtt4.1.0')
 // #endif
@@ -72,6 +72,7 @@ class MqttClient {
         if (!error) {
           console.log(`消息发布成功到: ${topic}`)
         }
+        console.log(error)
       })
     } else {
       console.log('MQTT client is not connected')

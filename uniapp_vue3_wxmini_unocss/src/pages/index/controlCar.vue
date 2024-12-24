@@ -38,7 +38,7 @@
         </view> -->
         <!-- 遥控器 -->
         <view w-[100%] flex items-center justify-center >
-          <view w-480rpx h-480rpx border-rd-[100%] relative mt-96rpx 
+          <view w-480rpx h-480rpx border-rd-[100%] relative mt-96rpx rotate="45" 
             class="clicker"
           >
             <view w-440rpx h-440rpx border-rd-[100%] bg-[#ecf0f3] overflow-hidden
@@ -46,38 +46,49 @@
               flex items-center justify-center
               class="clickerCon"
             >
-            <!--  -->
-              <view w-440rpx h-440rpx flex flex-wrap rotate="45" class="ctrlDirection">
+              <view w-440rpx h-440rpx flex flex-wrap  class="ctrlDirection">
+                <!-- 上 -->
                 <view w-220rpx h-220rpx box-border border-2rpx border-solid border-[#C3C8CE] bg-[#ecf0f3] 
                   flex items-center justify-center 
                   class="ctrlDirectionItem"
+                  @touchstart="onDirectionTouchStart($event,0)"
+                  @touchend="onDirectionTouchEnd($event,0)"
                 >
                   <view w-28rpx h-28rpx relative class="icon_direction">
                     <view w-4rpx h-28rpx border-rd-4rpx bg-[#8d939a] absolute top-0 left-0 ></view>
                     <view w-28rpx h-4rpx border-rd-4rpx bg-[#8d939a] absolute top-0 left-0 ></view>
                   </view>
                 </view>
+                <!-- 右 -->
                 <view w-220rpx h-220rpx box-border border-2rpx border-solid border-[#C3C8CE] bg-[#ecf0f3] 
                   flex items-center justify-center
                   class="ctrlDirectionItem"
+                  @touchstart="onDirectionTouchStart($event,1)"
+                  @touchend="onDirectionTouchEnd($event,1)"
                 >
                   <view w-28rpx h-28rpx relative class="icon_direction">
                     <view w-4rpx h-28rpx border-rd-4rpx bg-[#8d939a] absolute top-0 right-0 ></view>
                     <view w-28rpx h-4rpx border-rd-4rpx bg-[#8d939a] absolute top-0 left-0 ></view>
                   </view>
                 </view>
+                <!--  左 -->
                 <view w-220rpx h-220rpx box-border border-2rpx border-solid border-[#C3C8CE] bg-[#ecf0f3] 
                   flex items-center justify-center
                   class="ctrlDirectionItem"
+                  @touchstart="onDirectionTouchStart($event,2)"
+                  @touchend="onDirectionTouchEnd($event,2)"
                 >
                   <view w-28rpx h-28rpx relative class="icon_direction">
                     <view w-4rpx h-28rpx border-rd-4rpx bg-[#8d939a] absolute top-0 left-0 ></view>
                     <view w-28rpx h-4rpx border-rd-4rpx bg-[#8d939a] absolute bottom-0 left-0 ></view>
                   </view>
                 </view>
+                <!-- 下 -->
                 <view w-220rpx h-220rpx box-border border-2rpx border-solid border-[#C3C8CE] bg-[#ecf0f3] 
                   flex items-center justify-center
                   class="ctrlDirectionItem"
+                  @touchstart="onDirectionTouchStart($event,3)"
+                  @touchend="onDirectionTouchEnd($event,3)"
                 >
                   <view w-28rpx h-28rpx relative class="icon_direction">
                     <view w-4rpx h-28rpx border-rd-4rpx bg-[#8d939a] absolute top-0 right-0 ></view>
@@ -87,7 +98,7 @@
               </view>
               <view w-200rpx h-200rpx border-rd-[100%]
                 absolute left-[50%] top-[50%] translate-[-50%,-50%]
-                flex items-center justify-center
+                flex items-center justify-center rotate="-45"
                 class="cenCtrl"
                 @click="tapCenterCtrl"
               >
@@ -106,6 +117,7 @@
 </template>
 <script setup>
   import { useConfigStore } from '@/store/config'
+  import MqttClient from "@/utils/mqtt.js"
 
   const {blackLineH} = useConfigStore()
 
@@ -119,9 +131,68 @@
     console.error('live-player error:', e.detail.errMsg)
   }
 
+  /* 小车方向键 */
+  let btnTimer = ref(null)
+  let btnType = ref(-1) // 0 上 1 右 2 左 3 下
+
+  const onDirectionTouchStart = (e,type)=>{
+
+    btnType.value = type
+    sendMoveMsg()
+    btnTimer.value = setInterval(()=>{
+      sendMoveMsg()
+    },100)
+  }
+  const onDirectionTouchEnd = (e,type)=>{
+    clearInterval(btnTimer.value)
+    btnTimer.value = null
+    btnType.value = -1
+    sendMoveMsg()
+  }
+
   const tapCenterCtrl = ()=>{
     
   }
+  const sendMoveMsg = ()=>{
+    let msg = {
+      "kinds":2003, //消息类型
+      "senderId":12321, //消息发送方ID
+      "command":"moveRobot", //业务类型
+      "data": { //消息体
+        "x":0.1,
+        "y":0.0,
+      }
+    }
+    switch (btnType.value) {
+      case 0: // 前
+        msg.data ={ "x":0.1,"y":0.0,}
+        break;
+      case 1: // 右
+        msg.data ={ "x":0,"y":-0.3,}
+        break;
+      case 2: // 左
+        msg.data ={ "x":0,"y":0.3,}
+        break;
+      case 3: // 下
+        msg.data ={ "x":-0.1,"y":0.0,}
+        break;
+      case -1: // 停止
+        msg.data ={ "x":0.0,"y":0.0,}
+        break;
+      default:
+        break;
+    }
+    console.log("publish robot/move", btnType.value)
+    mqObj.publish('robot/move',JSON.stringify(msg))
+  }
+
+  let mqObj = reactive({})
+  
+  onMounted(async ()=>{
+    mqObj = new MqttClient()
+    mqObj.connect("ws://192.168.20.39:15675/ws")
+    // mqObj.subscribe("")
+  })
 </script>
 <style scoped lang="scss">
   .ctrlPage{

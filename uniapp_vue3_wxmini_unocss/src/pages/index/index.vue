@@ -170,8 +170,6 @@
     }
   ])
 
-  const { API_DEMO_GET } = useRequest()
-
   const list = ref([])
   let deInfo = ref({})
   const getList = () => {
@@ -348,6 +346,16 @@
                       }
                     }
                   }
+                  .tabPane2{
+                    .massActive{
+                      .mass_icon{
+                        background-color: #00D129;
+                      }
+                      .mass_text{
+                        color: #00D129;
+                      }
+                    }
+                  }
                   .tabPane4{
                     .tabPaneCon{
                       padding: 0;
@@ -365,10 +373,6 @@
       }
       
     }
-  }
-  ::v-deep .nut-popup{
-    
-    
   }
 
   .userPopup{
@@ -405,8 +409,5 @@
         color: #fff;
       }
     }
-  }
-  .test {
-    border-top: 2rpx solid #f0f0f0;
   }
 </style>

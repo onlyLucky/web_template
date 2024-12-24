@@ -1,7 +1,9 @@
 <!-- 主界面tabs 切换 -->
 <template>
   <view w-[100%] h-[100%] class="TabsComps" >
-    <nut-tabs v-model="curTabIndex" custom-color="#2085FF" swipeable title-scroll title-gutter="16" :ellipsis="false">
+    <nut-tabs v-model="curTabIndex" custom-color="#2085FF" swipeable title-scroll title-gutter="16" :ellipsis="false"
+      @change="getData"
+    >
       <nut-tab-pane title="身体检测">
         <view w-[100%] h-[100%] overflow-hidden class="tabPane1">
           <!-- 顶部标题 -->
@@ -75,8 +77,8 @@
           </view>
         </view>
       </nut-tab-pane>
-      <nut-tab-pane title="护理床">
-        <view w-[100%] h-[100%] overflow-hidden >
+      <nut-tab-pane title="护理床" >
+        <view w-[100%] h-[100%] overflow-hidden class="tabPane2">
           <!-- 顶部标题 -->
           <view w-[100%] h-60rpx mb-24rpx flex items-center justify-between
             class="tabPaneHeader"
@@ -109,16 +111,26 @@
                           absolute left-[50%] top-[50%] translate-[-50%,-50%]
                         ></view>
                       </view>
-                      <text text-[#2085FF] font-400 text-24rpx lh-34rpx>正在按摩中</text>
+                      <text text-[#2085FF] font-400 text-24rpx lh-34rpx>{{staticBed[curBedStatus]?staticBed[curBedStatus]:staticBed['0']}}</text>
                     </view>
                     
                   </view>
-                  <view w-[100%] h-[calc(100%-80rpx)] flex items-center justify-center >
+                  <view w-[100%] h-[calc(100%-160rpx)] flex items-center justify-center >
                     <image w-508rpx h-208rpx 
                       src="@img/index/nursingBed.png"
                       mode="scaleToFill"
                       lazy-load
                     />
+                  </view>
+                  <view w-[100%] h-80rpx flex items-center justify-center >
+                    <view flex items-center justify-center :class="[curMassageStatus=='1'?'massActive':'']">
+                      <view w-20rpx h-20rpx border-rd-[50%] bg-[#c6c6c6] shrink-0 mr-12rpx relative class="mass_icon">
+                        <view w-10rpx h-10rpx border-rd-[50%] bg-[#fff] absolute left-[50%] top-[50%] translate-[-50%,-50%] class="mass_icon_con"></view>
+                      </view>
+                      <text text-[#c6c6c6] font-400 text-24rpx lh-34rpx class="mass_text">
+                        {{staticMass[curMassageStatus]}}
+                      </text>
+                    </view>
                   </view>
                 </view>
               </view>
@@ -166,7 +178,7 @@
                           absolute left-[50%] top-[50%] translate-[-50%,-50%]
                         ></view>
                       </view>
-                      <text text-[#2085FF] font-400 text-24rpx lh-34rpx>小车正在排污中</text>
+                      <text text-[#2085FF] font-400 text-24rpx lh-34rpx>{{staticCar[curCarStatus]?staticCar[curCarStatus]:staticCar['0']}}</text>
                     </view>
                     <image w-48rpx h-48rpx  
                       src="@img/index/battery.png"
@@ -183,7 +195,13 @@
                   </view>
                 </view>
                 <!-- echarts 表格 -->
-                <view v-show="!carTabShow" w-[100%] h-[100%] overflow-auto>echarts 表格</view>
+                <view v-show="!carTabShow" w-[100%] h-[100%] overflow-auto>
+                  <text inline-block w-[100%] text-center text-[#666] font-400 text-28rpx lh-40rpx mb-40rpx >（{{nowDateStr}} 运行状态）</text>
+				  <!--  -->
+                  <view w-[100%] class="h-[calc(100%-90rpx)]" >
+					  <l-echart ref="chartRef"></l-echart>
+                  </view>
+                </view>
               </view>
               <view w-[100%] h-32rpx flex items-center justify-center relative >
                 <view
@@ -365,6 +383,22 @@
   
 </template>
 <script setup>
+  import {useRequest} from "@/api/index.js"
+  import {formatDate} from "@/utils/common"
+  
+  // import * as echarts from '@/uni_modules/lime-echart/static/echarts.min'
+  // #ifdef H5
+  import * as echarts from "echarts"
+  // #endif
+  
+  // #ifdef MP-WEIXIN
+  // import * as echarts from "@/static/echarts.min.js"
+  const echarts = require('../../../static/echarts.min.js');
+  // #endif
+  
+  
+  
+  const { getCarStatus } = useRequest()
   const props = defineProps({
     checkTime: {
       type:String,
@@ -423,19 +457,146 @@
       referValue: "65~80kg"
     },
   ])
+  /* 护理床 */
+  let staticBed = ref({
+    '0': '床端空闲',
+    '1': '床端马桶清洗',
+    '2': '床端身体清洗',
+    '3': '床端烘干',
+    '4': '床端马桶上翻',
+    '5': '床端马桶下翻',
+    '6': '床端左翻',
+    '7': '床端右翻',
+    '8': '床端上翻',
+    '9': '床端坐姿',
+  })
+  let curBedStatus = ref('0')
+  let staticMass = ref({
+    '0': '按摩关闭',
+    '1': '按摩开启',
+  })
+  let curMassageStatus = ref('0')
   /* tab 2 护理车*/
+  let staticCar = ref({
+    '-1': '运行结束',
+    '0': '空闲',
+    '1': '小车导航到床端',
+    '2': '小车到达床端',
+    '3': '小车加清水至床端',
+    '4': '床端排污水至小车',
+    '5': '小车导航到厕所端',
+    '6': '小车到达厕所端',
+    '7': '小车排污水至厕所',
+    '8': '厕所端加水至小车'
+  })
+  let curCarStatus = ref('0')
   let carTabShow = ref(true)
   const tapShowCar = ()=>{
+	console.log("tapShowCar")
     carTabShow.value = true
   }
   const tapShowEcharts = ()=>{
+	console.log("tapShowEcharts")
     carTabShow.value = false
+	initEcharts()
   }
   const goCtrlCarPage = ()=>{
     uni.navigateTo({
       url: '/pages/index/controlCar'
     })
   }
+  const getData = ()=>{
+    return getCarStatus().then(res=>{
+      curBedStatus.value = String(res.bedStatus)
+      curCarStatus.value = String(res.carStatus)
+      curMassageStatus.value = res.massageStatus?'1':'0'
+    })
+  }
+
+  let nowDateStr = ref(formatDate(new Date()))
+  let chartRef = ref(null)
+  const initEcharts = ()=>{
+    const option = {
+      grid: {
+        left: '-8%',
+        right: '0%',
+        bottom: '0%',
+        containLabel: true
+      },
+      xAxis: [
+        {
+          type: 'category',
+          boundaryGap: false,
+          data: ['09','10','11','12','13','14','15'],
+          axisLine: {
+            show: false,
+          },
+        }
+      ],
+      yAxis: [
+        {
+          show: false,
+          type: 'value'
+        }
+      ],
+      series: [
+        {
+          type: 'line',
+          stack: 'Total',
+          smooth: true,
+          lineStyle: {
+            width: 2,
+            color: "#2085FF",
+          },
+          showSymbol: false,
+          markLine: {
+            symbol: ['none', 'none'],
+            label: { show: false },
+            lineStyle:{
+              color:"#000",
+			  opacity:0.1,
+			  type: "dashed"
+            },
+			animation: false,
+            data: [{ xAxis: 0 },{ xAxis: 1 }, { xAxis: 2 }, { xAxis: 3 }, { xAxis: 4 },{ xAxis: 5 },{xAxis: 6}]
+          },
+          areaStyle: {
+            opacity: 0.8,
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              {
+                offset: 0,
+                color: 'rgba(32,133,255,0.3)'
+              },
+              {
+                offset: 1,
+                color: 'rgba(32,133,255,0)'
+              }
+            ])
+          },
+          emphasis: {
+            focus: 'series'
+          },
+          data: [140, 232, 101, 264, 90, 340, 250]
+        },
+        
+      ]
+    };
+	// 组件能被调用必须是组件的节点已经被渲染到页面上
+	setTimeout(()=>{
+		console.log(echarts,'echarts')
+		if(!chartRef.value) return
+		chartRef.value.init(echarts, chart => {
+			chart.setOption(option)
+		})
+	},300)
+  }
+
+  
+  onMounted(async ()=>{
+    await getData()
+  })
+  
+  
 </script>
 <style scoped lang="scss">
 .test{

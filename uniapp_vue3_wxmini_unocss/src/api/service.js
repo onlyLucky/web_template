@@ -24,7 +24,7 @@ export function createService () {
         // 目前和公司后端口头约定是字符串,以防万一强制转字符串
         switch (`${code}`) {
           // code === 200 | 2 代表没有错误
-          case '200':
+          case '0':
             return data
           // code === 400001004 代表token 过期打回登录页
           case '400001004':
