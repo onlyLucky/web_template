@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "allowJs": true, //编译时，允许有js文件
+    "jsxFragmentFactory": "Fragment",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "baseUrl": "./",
+    "strict": true,
+    "declaration": true,
+    "declarationDir": "./types",
+    "paths": {
+      "@/*": ["./src/*"],
+      "P/*": ["./public/*"],
+      "_c/*": ["./src/components/*"],
+      "_v/*": ["./src/views/*"]
+    },
+    "lib": ["esnext", "dom"],
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.js",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "./src/env.d.ts",
+    "./public/config.json"
+  ],
+  "exclude": ["node_modules"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

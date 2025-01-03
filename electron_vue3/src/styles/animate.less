@@ -1,0 +1,45 @@
+// 用户交互动画
+
+/* 加载旋转 */
+.iconLoading {
+  animation: ani-demo-spin 1s linear infinite;
+}
+@keyframes ani-demo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* 图标闪动动画 */
+.iconShark {
+  animation: blink 0.8s ease-in-out infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.iconFloat {
+  animation: float 1s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  50% {
+    transform: translate(0px, -3px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}

@@ -1,0 +1,26 @@
+.sOpt_Box {
+  width: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  user-select: none;
+  .sIconBox {
+    width: 40px;
+    height: 40px;
+    // background-color: @bg;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-app-region: no-drag;
+    &:hover {
+      background-color: @menu_item_hover;
+    }
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

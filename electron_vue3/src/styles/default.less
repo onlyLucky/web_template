@@ -1,0 +1,140 @@
+@import "./font.less";
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+
+// body,
+// button,
+// input,
+// select,
+// textarea {
+//     font: 12px/1.5tahoma, arial, \5b8b\4f53;
+// }
+// 刻黑体
+
+// "MiSans","SourceHanSerifCN","YanSui","HarmonyOS_Sans", "KeHeiTi","SourceHanSansSC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif
+body {
+  font-family: "HarmonyOS_Sans";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}
+
+address,
+cite,
+dfn,
+em,
+var {
+  font-style: normal;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: couriernew, courier, monospace;
+}
+
+small {
+  font-size: 12px;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+sup {
+  vertical-align: text-top;
+}
+
+sub {
+  vertical-align: text-bottom;
+}
+
+legend {
+  color: #000;
+}
+
+fieldset,
+img {
+  border: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+
+#DetailModel {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+#app {
+  user-select: none;
+  touch-action: none;
+}
+
+/*滚动条样式*/
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  position: absolute;
+  // top: 0;
+  right: 10px;
+  bottom: 20px;
+}
+// #f0f0f0
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  margin-bottom: 10px;
+  background-color: @p_scroll_bar;
+  box-shadow: none;
+}

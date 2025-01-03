@@ -1,0 +1,210 @@
+// 主题函数
+// @import "./theme.less";
+// 全局less函数处理
+@import "./global.less";
+
+.theme_basic {
+  --bg: #fff;
+  --fontColor: #999;
+  --content_bg: #f5f7f9;
+  --menu_item_hover: rgba(0, 0, 0, 0.06);
+  --f_color_h3: #333;
+  --f_color_h6: #666;
+  --f_color_active: #286bf6; //2196f3
+  --search_bottom_border: #e8eaec;
+  --tHeader_color: #515a6e;
+  --success: #19be6b;
+  --error: #ed4014;
+  // 会议纪要
+  --meet_summary_bbc: #dce7ff;
+  --meet_summary_icon_time: #dcdcdc;
+  --meet_summary_item_bc: rgba(0, 0, 0, 0.1);
+  // 会议文件
+  --meet_files_icon1Color: #faba62;
+  // 菜单
+  --menu_hover: #efefef;
+  // 视频
+  --video_header: #4da6ff;
+  --video_header_op: rgba(0, 0, 0, 0.66);
+  --v_right_bg: #18191b;
+  // 首页
+  --home_user_bg: #f9fdfe;
+  --home_num_t: #243354;
+  --home_tip: #ececed;
+  --home_color1: #ac5bff;
+  --home_color2: #4abcff;
+  --home_b_color: #f2f3f6;
+  // 播放器
+  --player_h_title: #fff;
+  --player_video_bg: #fff;
+  --player_d_bg: #fff;
+  // 播放器设置
+  --p_set_title: #fff;
+  --p_set_bg: #1e1e1e;
+  --p_set_h3: rgba(255, 255, 255, 0.7);
+  --p_s_h3_active: #fff;
+  --p_s_h3_hover: #fff;
+  --p_s_left_select_color: #fff;
+  --p_s_left_select_bg: #444;
+  --p_s_left_border: #444;
+  --p_s_right_item_con: #999;
+  --p_input_border: rgba(255, 255, 255, 0.3);
+  --p_input_bg: transparent;
+  --p_input_icon: #666;
+  --p_input_bg_hover: transparent;
+  --p_input_color: rgba(255, 255, 255, 0.7);
+  --p_input_placeholder: rgba(255, 255, 255, 0.3);
+  --p_input_shadow: rgba(255, 255, 255, 0.1);
+  --p_select_shadow: rgba(255, 255, 255, 0.5);
+  --p_select_box: #444;
+  --p_select_item_hover: rgba(0, 0, 0, 0.35);
+  --p_scroll_bar: #333;
+  --p_radio_border: #bcbcbc;
+  --p_radio_bg: transparent;
+  --p_radio_hover: #dcdee2;
+  --p_radio_bg_after: #bcbcbc;
+  --p_btn_text_color: #666;
+  --p_btn_primary_hover_bg: #666;
+  --p_btn_primary_bg: #444;
+  --p_btn_primary_color: rgba(255, 255, 255, 0.7);
+  --p_s_right_h3: #e3e3e3;
+}
+
+.theme_dark {
+  --bg: #fff;
+  --fontColor: #999;
+  --content_bg: #f5f7f9;
+  --menu_item_hover: rgba(0, 0, 0, 0.06);
+  --f_color_h3: #333;
+  --f_color_h6: #666;
+  --f_color_active: #286bf6; //2196f3
+  --search_bottom_border: #e8eaec;
+  --tHeader_color: #515a6e;
+  --success: #19be6b;
+  --error: #ed4014;
+  // 会议纪要
+  --meet_summary_bbc: #dce7ff;
+  --meet_summary_icon_time: #dcdcdc;
+  --meet_summary_item_bc: rgba(0, 0, 0, 0.1);
+  // 会议文件
+  --meet_files_icon1Color: #faba62;
+  // 菜单
+  --menu_hover: #efefef;
+  // 视频
+  --video_header: #000;
+  --video_header_op: rgba(0, 0, 0, 0.66);
+  --v_right_bg: #18191b;
+  // 首页
+  --home_user_bg: #f9fdfe;
+  --home_num_t: #243354;
+  --home_tip: #ececed;
+  --home_color1: #ac5bff;
+  --home_color2: #4abcff;
+  --home_b_color: #f2f3f6;
+  // 播放器设置
+  --p_set_title: #999;
+  --p_set_bg: #fff;
+  --p_set_h3: #333;
+  --p_s_h3_active: #fff;
+  --p_s_h3_hover: #286bf6;
+  --p_s_left_select_color: #fff;
+  --p_s_left_select_bg: #286bf6;
+  --p_s_left_border: #e8eaec;
+  --p_s_right_item_con: #999;
+  --p_input_border: #d6d6d6;
+  --p_input_bg: #fff;
+  --p_input_icon: #666;
+  --p_input_bg_hover: #fff;
+  --p_input_color: #333;
+  --p_input_placeholder: #999;
+  --p_input_shadow: rgba(45, 140, 240, 0.2);
+  --p_select_shadow: rgba(0, 0, 0, 0.2);
+  --p_select_box: #fff;
+  --p_select_item_hover: #f3f3f3;
+  --p_scroll_bar: #e1e1e1;
+  --p_radio_border: #dcdee2;
+  --p_radio_bg: #fff;
+  --p_radio_hover: #bcbcbc;
+  --p_radio_bg_after: #286bf6;
+  --p_btn_text_color: #666;
+  --p_btn_primary_hover_bg: #3f7efc;
+  --p_btn_primary_color: #fff;
+  --p_btn_primary_bg: #286bf6;
+  --p_s_right_h3: #333;
+}
+// 默认主题
+.theme_basic {
+  .theme_basic();
+}
+// 暗黑主题
+.theme_dark {
+  .theme_dark();
+}
+
+@bg: var(--bg);
+@fontColor: var(--fontColor);
+@top_right_hover: var(--top_right_hover);
+@content_bg: var(--content_bg);
+@menu_item_hover: var(--menu_item_hover);
+@f_color_h3: var(--f_color_h3);
+@f_color_h6: var(--f_color_h6);
+@f_color_active: var(--f_color_active);
+@search_bottom_border: var(--search_bottom_border);
+@success: var(--success);
+@error: var(--error);
+@tHeader_color: var(--tHeader_color);
+@meet_summary_bbc: var(--meet_summary_bbc);
+@meet_summary_icon_time: var(--meet_summary_icon_time);
+@meet_summary_item_bc: var(--meet_summary_item_bc);
+@meet_files_icon1Color: var(--meet_files_icon1Color);
+@menu_hover: var(--menu_hover);
+@video_header: var(--video_header);
+@video_header_op: var(--video_header_op);
+@v_right_bg: var(--v_right_bg);
+@home_user_bg: var(--home_user_bg);
+@home_num_t: var(--home_num_t);
+@home_tip: var(--home_tip);
+@home_color1: var(--home_color1);
+@home_color2: var(--home_color2);
+@home_b_color: var(--home_b_color);
+// 播放器设置
+@p_scroll_bar: var(--p_scroll_bar);
+@p_set_title: var(--p_set_title);
+@p_set_bg: var(--p_set_bg);
+@p_set_h3: var(--p_set_h3);
+@p_s_h3_active: var(--p_s_h3_active);
+@p_s_h3_hover: var(--p_s_h3_hover);
+@p_s_left_select_color: var(--p_s_left_select_color);
+@p_s_left_select_bg: var(--p_s_left_select_bg);
+@p_s_right_item_con: var(--p_s_right_item_con);
+@p_input_border: var(--p_input_border);
+@p_input_color: var(--p_input_color);
+@p_input_bg: var(--p_input_bg);
+@p_input_bg_hover: var(--p_input_bg_hover);
+@p_input_placeholder: var(--p_input_placeholder);
+@p_input_shadow: var(--p_input_shadow);
+@p_input_icon: var(--p_input_icon);
+@p_select_shadow: var(--p_select_shadow);
+@p_select_box: var(--p_select_box);
+@p_select_item_hover: var(--p_select_item_hover);
+@p_radio_hover: var(--p_radio_hover);
+@p_radio_border: var(--p_radio_border);
+@p_radio_bg: var(--p_radio_bg);
+@p_btn_text_color: var(--p_btn_text_color);
+@p_btn_primary_hover_bg: var(--p_btn_primary_hover_bg);
+@p_s_right_h3: var(--p_s_right_h3);
+@p_btn_primary_bg: var(--p_btn_primary_bg);
+@p_radio_bg_after: var(--p_radio_bg_after);
+@p_s_left_border: var(--p_s_left_border);
+@p_btn_primary_color: var(--p_btn_primary_color);
+
+// 字体大小设置
+/* :root {
+  // 文字大小单元
+  --fontUnit: 14;
+}
+
+@fontUnit: var(--fontUnit); */
+.fontSizePx2Em(@num) {
+  font-size: calc((@num / 14) * 1em) !important;
+}

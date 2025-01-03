@@ -1,0 +1,94 @@
+@import "./flex.less";
+.mt10 {
+  margin-top: 10px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.m20 {
+  margin: 20px 0;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.db {
+  display: block;
+}
+
+.lh1 {
+  line-height: 1 !important;
+}
+
+//滚动条样式
+.overY {
+  overflow-y: auto !important;
+  height: 100%;
+}
+
+.overY::-webkit-scrollbar {
+  width: 14px;
+  height: 5px;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+
+.overY::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background-color: #ffffff;
+}
+
+/*定义滑块 内阴影+圆角*/
+
+.overY::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #d6d6d6;
+}
+
+.showPage {
+  height: 100%;
+  position: relative;
+  padding-top: 40px;
+  min-width: 1000px;
+  overflow-x: auto;
+
+  .showForm {
+    width: 60vw;
+    margin: 0 auto;
+
+    //表单下的按钮
+    .formButtons {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      left: 40px;
+      text-align: right;
+    }
+  }
+}
+
+// 设置宽高
+.size(@w,@h) {
+  width: @w;
+  height: @h;
+}
+
+.textCenter(@h) {
+  text-align: center;
+  line-height: @h;
+}

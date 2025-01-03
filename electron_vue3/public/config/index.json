@@ -1,0 +1,275 @@
+{
+  "version": "1.7.1",
+  "appName": "可立批视频播放器",
+  "basic": {
+    "name": "basic",
+    "description": "基础设置",
+    "show": true,
+    "fontFamily": {
+      "index": 0,
+      "value": "HarmonyOS_Sans"
+    },
+    "fontSize": {
+      "index": 1,
+      "value": 14
+    },
+    "children": [
+      {
+        "name": "fontFamily",
+        "parent": "basic",
+        "description": "字体",
+        "isNeedReload": false,
+        "show": true,
+        "type": "Select",
+        "value": "HarmonyOS_Sans",
+        "props": {
+          "option": [
+            {
+              "label": "华为鸿蒙系统字体",
+              "value": "HarmonyOS_Sans"
+            },
+            {
+              "label": "小米MIUI系统字体",
+              "value": "MiSans"
+            },
+            {
+              "label": "思源黑体旧字形",
+              "value": "SourceHanSansSC"
+            },
+            {
+              "label": "思源宋体",
+              "value": "SourceHanSerifCN"
+            }
+          ]
+        }
+      },
+      {
+        "name": "fontSize",
+        "parent": "basic",
+        "description": "字体大小",
+        "isNeedReload": false,
+        "type": "Select",
+        "show": false,
+        "value": 14,
+        "props": {
+          "option": [
+            {
+              "label": "偏小",
+              "value": 12
+            },
+            {
+              "label": "标准",
+              "value": 14
+            },
+            {
+              "label": "偏大",
+              "value": 16
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "windows": {
+    "name": "windows",
+    "description": "窗口设置",
+    "show": true,
+    "closeAppMode": {
+      "index": 0,
+      "value": 0
+    },
+    "winsNum": {
+      "index": 1,
+      "value": 3
+    },
+    "isOpenDebug": {
+      "index": 2,
+      "value": 0
+    },
+    "children": [
+      {
+        "name": "closeAppMode",
+        "parent": "windows",
+        "description": "关闭主窗口",
+        "isNeedReload": false,
+        "type": "RadioGroup",
+        "show": false,
+        "value": 0,
+        "props": {
+          "data": [
+            {
+              "label": "最小化到托盘，不退出程序",
+              "value": 0
+            },
+            {
+              "label": "退出程序",
+              "value": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "winsNum",
+        "parent": "windows",
+        "description": "窗口个数",
+        "type": "Slider",
+        "isNeedReload": false,
+        "show": false,
+        "value": 3,
+        "props": {
+          "min": 1,
+          "max": 15,
+          "showInput": false,
+          "showTip": true,
+          "marks": {
+            "1": "1",
+            "5": "5",
+            "10": "10",
+            "15": "15"
+          }
+        }
+      },
+      {
+        "name": "isOpenDebug",
+        "parent": "windows",
+        "description": "是否开启调试模式",
+        "isNeedReload": true,
+        "type": "RadioGroup",
+        "show": true,
+        "value": 0,
+        "props": {
+          "data": [
+            {
+              "label": "关闭",
+              "value": 0
+            },
+            {
+              "label": "开启",
+              "value": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "language": {
+    "name": "language",
+    "description": "语言与文字",
+    "show": false,
+    "lang": {
+      "index": 0,
+      "value": "zh-CN"
+    },
+    "children": [
+      {
+        "name": "lang",
+        "parent": "language",
+        "description": "切换语言",
+        "isNeedReload": true,
+        "type": "Select",
+        "show": true,
+        "value": "zh-CN",
+        "props": {
+          "option": [
+            {
+              "value": "zh-CN",
+              "label": "简体中文"
+            },
+            {
+              "value": "en-US",
+              "label": "英语"
+            }
+          ],
+          "filterable": true
+        }
+      }
+    ]
+  },
+  "keyboard": {
+    "name": "keyboard",
+    "description": "快捷键",
+    "show": false,
+    "keyboardList": {
+      "value": [],
+      "index": 0
+    },
+    "children": [
+      {
+        "name": "keyboardList",
+        "parent": "keyboard",
+        "value": [],
+        "description": "键盘快捷键",
+        "type": "Keyboard",
+        "show": false,
+        "props": {
+          "list": [
+            {
+              "name": "激活应用窗口",
+              "keyArr": []
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "network": {
+    "name": "network",
+    "description": "网络配置",
+    "show": true,
+    "baseUrl": {
+      "index": 0,
+      "value": "http://192.168.19.139:8888"
+    },
+    "timeOut": {
+      "index": 1,
+      "value": 7200
+    },
+    "children": [
+      {
+        "name": "baseUrl",
+        "parent": "network",
+        "value": "http://192.168.19.139:8888",
+        "description": "代理网络",
+        "isNeedReload": true,
+        "type": "Input",
+        "show": true,
+        "props": {
+          "type": "url",
+          "placeholder": "请输入代理网络",
+          "clearable": false
+        }
+      },
+      {
+        "name": "timeOut",
+        "parent": "network",
+        "value": 7200,
+        "description": "超时时长",
+        "isNeedReload": false,
+        "show": false,
+        "type": "Text",
+        "props": {}
+      }
+    ]
+  },
+  "download": {
+    "name": "download",
+    "description": "下载配置",
+    "show": false,
+    "downloadPath": {
+      "index": 0,
+      "value": ""
+    },
+    "children": [
+      {
+        "name": "downloadPath",
+        "parent": "network",
+        "value": "",
+        "show": false,
+        "description": "保存地址",
+        "isNeedReload": false,
+        "type": "PathSelect",
+        "props": {}
+      }
+    ]
+  }
+}
