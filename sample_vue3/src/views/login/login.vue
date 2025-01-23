@@ -14,6 +14,7 @@ function toHome() {
 <template>
     <div class="login-wrap">
         <p @click="toHome">登录页面1111</p>
+        <el-button>Default</el-button>
 <!--        {{ userInfo.username }}的年龄是{{ userInfo.age }}-->
     </div>
 </template>

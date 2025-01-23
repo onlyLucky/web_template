@@ -1,11 +1,12 @@
 import { createApp } from 'vue'
+import "normalize.css"
 import './style.css'
 import App from './App.vue'
 const app = createApp(App)
 // 路由设置
-import router from './router/index'
+import router from '@/router/index'
 app.use(router)
-import { setupStore } from './store'
+import { setupStore } from '@/store'
 // 挂载store
 setupStore(app);
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
-import {getCookie,setCookie} from '../../utils/cookie'
+import {getCookie,setCookie} from './cookie'
 const service: AxiosInstance = axios.create({
     baseURL: import.meta.env.VITE_APP_API_BASEURL,
     timeout: 15000,
